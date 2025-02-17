@@ -1,0 +1,75 @@
+      ******************************************************************
+      * Author: Devangbhai Pandit
+      * Student Id: 041145889
+      * Course Section: CST8283-310  
+      * Date: 23-01-2023
+      * Purpose: Solution for the Lab2 which reads the stock file and 
+      *          displays the selected fields.
+      * Tectonics:cobc
+      ******************************************************************
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. Lab-2.
+       ENVIRONMENT DIVISION.
+       INPUT-OUTPUT SECTION.
+       FILE-CONTROL.
+           SELECT STOCK-FILE ASSIGN TO "C:\STOCK.TXT"
+               ORGANIZATION IS LINE SEQUENTIAL.
+
+       DATA DIVISION.
+       FILE SECTION.
+       FD STOCK-FILE.
+       01 STOCK-DATA.
+           05 COMPANY-NAME PIC A(25).
+           05 TICKER-SYMBOL PIC X(7).
+           05 TRADING-INFO.
+              10 VOLUME.
+                  15 AVG-VOLUME PIC 9(8).
+                  15 TODAY-VOLUME PIC 9(8).
+              10 STOCK-PRICE.
+                  15 52-WEEK-HIGH PIC 99V99.
+                  15 52-WEEK-LOW PIC 99V99.
+                  15 AT-CLOSING PIC 99V99.
+
+       WORKING-STORAGE SECTION.
+       01 EOF-FLAG PIC X VALUE 'N'.
+
+       PROCEDURE DIVISION.
+       100-PRODUCE-STOCK-REPORT.
+           PERFORM 201-INITIALIZE-ROUTINE.
+           PERFORM 202-DISPLAY-ONE-STOCK-RECORD UNTIL EOF-FLAG = 'Y'.
+           PERFORM 203-CLOSE-ROUTINE.
+           STOP RUN.
+
+       201-INITIALIZE-ROUTINE.
+           PERFORM 301-OPEN-STOCK-FILE.
+           PERFORM 302-READ-STOCK-RECORD.
+
+       202-DISPLAY-ONE-STOCK-RECORD.
+           PERFORM 303-DISPLAY-STOCK.
+           PERFORM 302-READ-STOCK-RECORD.
+
+       203-CLOSE-ROUTINE.
+           CLOSE STOCK-FILE.
+           DISPLAY "STOCK-FILE CLOSED".
+
+       301-OPEN-STOCK-FILE.
+           OPEN INPUT STOCK-FILE.
+           DISPLAY "STOCK-FILE OPENED".
+
+       302-READ-STOCK-RECORD.
+           READ STOCK-FILE
+               AT END
+                   MOVE 'Y' TO EOF-FLAG
+               NOT AT END
+                   CONTINUE.
+
+       303-DISPLAY-STOCK.  
+           DISPLAY "Ticker: " TICKER-SYMBOL.          
+           DISPLAY "Closing Price: " AT-CLOSING.
+
+       END PROGRAM Lab-2.
+
+
+
+
+

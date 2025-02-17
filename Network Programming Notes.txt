@@ -1,0 +1,14 @@
+MAC - Media Access Control, Hexadecimal number
+LAN (local area network), MAN (meteropolitan area network) and WAN (wide area network) - All three are the networks
+Network - Connection between two computers through a cable
+Topology - The physical layout of the network
+Thin-net or 10 base 2 or 10 baseband 2 (200 metres and 30 computers per segment)
+Thick-net or 10 base 5 or 10 baseband 5 or backbone cable (500 metres and 100 computers per segment)
+star or 10 base T or baseband twisted pair (100 computers per segment)
+Switches cables
+i) UTP - Unshielded Twisted Pair
+ii) STP - Shielded Twisted Pair
+This cables are folded because of EMI (Electro Magnetic Interface), more twisted less EMI
+
+Hubs - half duplex
+Switches - full duplex

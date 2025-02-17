@@ -1,0 +1,176 @@
+/* Reset styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f7f7; /* Light background for a soft look */
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+/* Main container (square box) */
+.container {
+    width: 100%;
+    max-width: 600px;
+    height: 600px;  /* Square container */
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+section {
+    margin-top: auto; /* Push the button to the bottom */
+}
+
+/* Header styles */
+h1 {
+    text-align: center;
+    font-size: 2em;
+    color: #33cc33;  /* Fresh Green */
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+/* Search form styles */
+form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+form input {
+    padding: 12px;
+    font-size: 1em;
+    border: 2px solid #33cc33;
+    border-radius: 20px;
+    width: 80%;
+    max-width: 450px;
+    outline: none;
+    background-color: #f1f1f1;
+    transition: all 0.3s ease;
+}
+
+form input:focus {
+    border-color: #28a745;
+    background-color: white;
+}
+
+form button {
+    padding: 12px 25px;
+    font-size: 1em;
+    color: white;
+    background-color: #33cc33;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-left: 10px;
+}
+
+form button:hover {
+    background-color: #28a745;
+}
+
+/* Event card styling */
+.event {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.event:hover {
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.event h2 {
+    color: #33cc33;  /* Green color for event title */
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.event p {
+    font-size: 1.1em;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+/* No events found styling */
+.no-events {
+    text-align: center;
+    font-size: 1.3em;
+    color: #888;
+    margin-top: 20px;
+}
+
+a {
+    text-decoration: none; /* Remove the underline from the link */
+}
+
+a button {
+    padding: 10px 20px;
+    background-color: #28a745; /* Fresh green background */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.2s;
+    display: inline-block;
+}
+
+a button:hover {
+    background-color: #218838; /* Darker green on hover */
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+a button:active {
+    background-color: #1e7e34; /* Even darker green on click */
+    transform: scale(0.98); /* Slightly shrink the button on click */
+}
+
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+    .container {
+        height: auto;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    .event h2 {
+        font-size: 1.3em;
+    }
+
+    .event p {
+        font-size: 1em;
+    }
+
+    form input,
+    form button {
+        width: 90%;
+    }
+}
+
+
+

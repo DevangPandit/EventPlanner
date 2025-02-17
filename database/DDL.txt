@@ -1,0 +1,17 @@
+create table events (
+    id int auto_increment primary key,
+    title varchar(255) not null,
+    description text not null,
+    date date not null,
+    location varchar(255) not null,
+    type varchar(50) not null,
+    rsvp int default 0
+);
+
+create table users (
+    id int auto_increment primary key,
+    name varchar(255) not null,
+    email varchar(255) unique not null,
+    password varchar(255) not null
+    role varchar(50) not null
+);

@@ -1,0 +1,207 @@
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #eef2f3, #d4e4db); /* Subtle gradient background */
+    color: #333;
+    padding: 40px 20px;
+    min-height: 100vh;
+}
+
+/* Header */
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+    color: #4CAF50; /* Fresh Green */
+    text-transform: uppercase;
+}
+
+/* Form Container */
+form {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+    width: 100%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Form Elements */
+form input, form textarea, form button {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 2px solid #d4d4d4;
+    border-radius: 6px;
+    font-size: 1rem;
+    color: #333;
+}
+
+/* Focus State */
+form input:focus, form textarea:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+/* Button */
+form button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #45a049;
+}
+
+/* Event List Section */
+h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Event Cards */
+ul {
+    list-style: none;
+    padding: 0;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+ul li {
+    background: #ffffff;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+ul li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Event Title */
+ul li h3 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #4CAF50;
+    margin-bottom: 10px;
+}
+
+/* Event Date and Delete Button */
+ul li p {
+    font-size: 1.1rem;
+    color: #555;
+    margin: 5px 0;
+}
+
+ul li form {
+    display: inline-block;
+}
+
+ul li form button {
+    background-color: #f44336; /* Red color for delete */
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+ul li form button:hover {
+    background-color: #e53935;
+}
+
+a {
+    text-decoration: none; /* Remove the underline from the link */
+}
+
+a button {
+    padding: 10px 20px;
+    background-color: #28a745; /* Fresh green background */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.2s;
+    display: inline-block;
+}
+
+a button:hover {
+    background-color: #218838; /* Darker green on hover */
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+a button:active {
+    background-color: #1e7e34; /* Even darker green on click */
+    transform: scale(0.98); /* Slightly shrink the button on click */
+}
+
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    body {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    form {
+        width: 90%;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    ul li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    ul li h3 {
+        font-size: 1.3rem;
+    }
+
+    ul li p {
+        font-size: 1rem;
+    }
+    
+    ul li form {
+        margin-top: 10px;
+    }
+}

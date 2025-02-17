@@ -1,0 +1,124 @@
+      ******************************************************************
+      * Author: Devangbhai Pandit
+      * StudentID: 041145889
+      * Course and Section: CST8283-310
+      * Date: 13 February 2025
+      * Purpose: Solution for Project 1
+      ******************************************************************
+
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. Project1-Devang.
+       ENVIRONMENT DIVISION.
+       INPUT-OUTPUT SECTION.
+       FILE-CONTROL.
+           SELECT EMPLOYEE-DATA-FILE ASSIGN TO "..\Employee.txt"
+               ORGANIZATION IS LINE SEQUENTIAL.
+
+       DATA DIVISION.
+       FILE SECTION.
+       FD EMPLOYEE-DATA-FILE.
+       01 EMPLOYEE-DATA.
+           05 EMPLOYEE-ID PIC 9(6).
+           05 DEPARTMENT-CODE PIC 9(3).
+           05 LAST-NAME PIC X(20).
+           05 FIRST-NAME PIC X(20).
+           05 YEARS-OF-SERVICE PIC 99V9.
+
+       WORKING-STORAGE SECTION.
+       01 MY-FIELDS.
+           05 EOF-FLAG PIC X VALUE 'N'.
+           05 PROMPT-ANSWER PIC X.
+
+       01 HEADER-LINE1 PIC X(80) VALUE
+            "EMPLOYEE ID  DEPT  FIRST NAME    LAST NAME  SERVICE YEARS".
+       01 DASH-LINE PIC X(80) VALUE ALL "=".
+
+       01 WS-OUTPUT-FIELDS.
+           05 WS-ID PIC  9(6).
+           05 WS-DT PIC  9(3).
+           05 WS-FN PIC  X(15).
+           05 WS-LN PIC  X(15).
+           05 WS-YS PIC  99.9.
+
+       PROCEDURE DIVISION.
+       100-PRODUCE-EMPLOYEE-REPORT.
+           PERFORM 101-INITIALIZE-FILE.
+           PERFORM 102-CREATE-EMPLOYEE-RECORD UNTIL PROMPT-ANSWER = 'N'.
+           PERFORM 103-RESET-FILE.
+           PERFORM 104-READ-ONE-EMPLOYEE-RECORD UNTIL EOF-FLAG = 'Y'.
+           PERFORM 105-CLOSE-FILE.
+           STOP RUN.
+
+       101-INITIALIZE-FILE.
+           PERFORM 201-OPEN-EMPLOYEE-DATA-FILE.
+           PERFORM 202-PROMPT-RECORD-IN-FILE.
+
+       102-CREATE-EMPLOYEE-RECORD.
+           PERFORM 203-ADDING-DATA-TO-FILE.
+           PERFORM 202-PROMPT-RECORD-IN-FILE.
+
+       103-RESET-FILE.
+           PERFORM 204-CLOSING-EMPLOYEE-DATA-FILE.
+           PERFORM 205-REOPEN-EMPLOYEE-DATA-FILE.
+
+       104-READ-ONE-EMPLOYEE-RECORD.           
+           DISPLAY HEADER-LINE1
+           DISPLAY DASH-LINE
+           
+           PERFORM UNTIL EOF-FLAG = 'Y'
+           PERFORM 206-READ-DATA
+              IF EOF-FLAG = 'N'
+                  PERFORM 207-DISPLAY-FILTER-RECORD
+              END-IF
+           END-PERFORM.               
+
+       105-CLOSE-FILE.
+           CLOSE EMPLOYEE-DATA-FILE.
+           DISPLAY "PROGRAM EXECUTED".
+
+       201-OPEN-EMPLOYEE-DATA-FILE.
+           OPEN OUTPUT EMPLOYEE-DATA-FILE.
+
+       202-PROMPT-RECORD-IN-FILE.
+           DISPLAY "DO YOU WANT TO ENTER A RECORD? (Y/N): ".
+           ACCEPT PROMPT-ANSWER.
+           IF PROMPT-ANSWER NOT = 'Y' AND PROMPT-ANSWER NOT = 'N'
+               DISPLAY "INVALID INPUT. PLEASE ENTER 'Y' OR 'N': "
+               ACCEPT PROMPT-ANSWER.
+
+       203-ADDING-DATA-TO-FILE.
+           DISPLAY "ENTER EMPLOYEE ID (6 DIGITS): ".
+           ACCEPT EMPLOYEE-ID.
+           DISPLAY "ENTER DEPARTMENT CODE (3 DIGITS): ".
+           ACCEPT DEPARTMENT-CODE.
+           DISPLAY "ENTER LAST NAME (MAX 20 CHARACTERS): ".
+           ACCEPT LAST-NAME.
+           DISPLAY "ENTER FIRST NAME (MAX 20 CHARACTERS): ".
+           ACCEPT FIRST-NAME.
+           DISPLAY "ENTER YEARS OF SERVICE (99.9): ".
+           ACCEPT YEARS-OF-SERVICE.
+           WRITE EMPLOYEE-DATA.
+
+       204-CLOSING-EMPLOYEE-DATA-FILE.
+           CLOSE EMPLOYEE-DATA-FILE.
+
+       205-REOPEN-EMPLOYEE-DATA-FILE.
+           OPEN INPUT EMPLOYEE-DATA-FILE.
+           MOVE 'N' TO EOF-FLAG.
+
+       206-READ-DATA.
+           READ EMPLOYEE-DATA-FILE
+               AT END MOVE 'Y' TO EOF-FLAG
+           END-READ.
+
+       207-DISPLAY-FILTER-RECORD.
+           IF YEARS-OF-SERVICE > 10.4
+               MOVE EMPLOYEE-ID TO WS-ID
+               MOVE DEPARTMENT-CODE TO WS-DT
+               MOVE FIRST-NAME TO WS-FN
+               MOVE LAST-NAME TO WS-LN
+               MOVE YEARS-OF-SERVICE TO WS-YS
+               DISPLAY WS-ID "  " WS-DT "  " WS-FN "  " WS-LN "  " WS-YS.
+           END-IF.
+
+       END PROGRAM Project1-Devang.
